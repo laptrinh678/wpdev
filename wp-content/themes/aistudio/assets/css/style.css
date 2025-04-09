@@ -1,0 +1,243 @@
+header{
+  position: fixed;
+    width: 100%;
+    z-index: 50;
+}
+
+.bg-light {
+  background-color: white;
+  --bs-bg-opacity: 0;
+}
+.navbar-brand {
+  color: white;
+}
+.dropdown-toggle::after {
+  display: none;
+}
+.nav-link{ color: white;}
+.nav-item{ padding-right: 25px;}
+/* .slider{
+  background-image: url('/asset/images/s9.jpeg');
+} */
+a{ text-decoration: none;}
+.slider{
+  background-image: url("http://localhost/wpdev/wp-content/themes/aistudio/assets/images/s9.jpeg");
+  height:600px;
+}
+.slider-item{
+    margin: auto;
+    min-height: 268px;
+    background: white;
+    /* opacity: 0.5; */
+    border-radius: 25px 25px 0px 0px;
+    padding: 30px;
+    margin-top: 50px;
+}
+.list-group-item{
+  border: none;
+}
+.fa{
+  margin-right: 10px;
+}
+
+.slider-item .owl-carousel .owl-nav.disabled {
+    display: block;
+    position: absolute;
+    top: 25%;
+    width: 100%;
+}
+.slider-item .owl-carousel .owl-prev{
+    float: left;
+    width: 40px;
+    height: 40px;
+    background: #bebcbc;
+    border-radius: 20px;
+    left: -26px;
+}
+.slider-item .owl-carousel .owl-nav button.owl-prev{
+    background: #737373;
+    opacity: 0.8;
+    position: relative;
+}
+.slider-item .owl-prev span{
+    font-size: 33px;
+    position: absolute;
+    top: -7px;
+    left: 14px;
+}
+.slider-item .owl-next span{
+    font-size: 33px;
+    position: absolute;
+    top: -7px;
+    left: 14px;
+}
+.slider-item .owl-carousel .owl-next{
+    float: right;
+    width: 40px;
+    margin-right: -20px;
+    height: 40px;
+    background: #bebcbc;
+    border-radius: 20px;
+    position: relative;
+}
+.slider-item .owl-carousel .owl-nav button.owl-next{
+  background: #737373;
+    opacity: 0.8;
+}
+.slider-item .owl-theme  img {
+height: 180px;
+border-radius: 20px;
+}
+.bg-full {
+  background: #EE0033;
+}
+.btn-style{
+    padding: 30px;
+    border-radius: 30px 30px 30px 0px;
+    padding-bottom: 20px;
+    padding-top: 20px;
+}
+.btn-login{
+    margin-right: 25px;
+    padding: 8px;
+    color: white;
+    border: none;
+    border-radius: 12px 12px 12px 0px;
+}
+.btn-lang {
+    background: white;
+    border-radius: 41px;
+    padding: 7px;
+    padding-left: 9px;
+    padding-right: 9px;
+}
+.btn-lang:hover {
+    background-color: #ee0033;
+    border-color: #ee0033;
+    color: white;
+}
+
+.nav-link:hover {
+    color: white;
+}
+.dropdown-menu{
+  top: 30px;
+}
+.dropdown-menu .row{
+  min-width: 600px;
+}
+.w-50{
+  width: 50%;
+  float: left;
+}
+.pd-t-30{
+ padding-top: 30px;
+}
+.pd-b-30 {
+  padding-bottom: 30px;
+}
+.pd-l-30{
+  padding-left: 30px;
+}
+.item-menu-child{
+  padding-left: 0px;
+}
+.item-menu-child li{
+  list-style-type: none;
+  padding: 15px;
+}
+.list-group-item:hover {
+  cursor: pointer;
+}
+.item-menu-child .content{
+font-size: 12px;
+}
+.disabled {
+  display: none;
+}
+.switch{
+  display: block;
+    width: 30%;
+    margin: auto;
+    background: #e5e5e5;
+    padding: 5px 5px 5px 0px;
+    border-radius: 46px;
+    text-align: center;
+}
+.item-video {
+    padding: 15px;
+    padding-right: 58px;
+    padding-left: 58px;
+    border-radius: 30px;
+}
+.item-picture{
+    padding-left: 28px;
+    padding-right: 28px;
+    padding-top: 15px;
+}
+.owl-picture .list-group-item{
+padding: 0px;
+}
+.mg-auto{
+  margin: auto;
+}
+.w-100{
+  width: 100%;
+  float: left;
+}
+.item-lv  .active {
+  background: #FAFAFA;
+}
+.item-lv .list-group-item{
+  color: black;
+  border-bottom: 1px solid #dddddd;
+    border-radius: 0px;
+}
+.item-lv .fa-chevron-up{
+  display: none;
+}
+.partner .owl-carousel .owl-item img{
+  width: auto;
+}
+.partner{
+  background: #FFFAFB;
+  padding-top: 100px;
+  padding-bottom: 100px;
+}
+.blog{
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+.blog-name{
+  display: block;
+    padding-right: 30px;
+    border-right: 2px solid #d0cccc;
+}
+.blog .nav-link{
+  color: black;
+}
+.blog .nav-item .active{
+    background: black;
+    color: white;
+    border-radius: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+.blog .nav-link:hover {
+    border: 1px solid white;
+    color: red;
+    border-color: white;
+}
+.blog .nav-tabs{
+  border:none
+}
+.item-news{
+  position: relative;
+}
+.item-news .content{
+  position: absolute;
+  bottom: 2px;
+}
+.blog-status .row>div{
+  float: left;
+}
