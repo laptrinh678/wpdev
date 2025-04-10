@@ -23,6 +23,9 @@ $(document).ready(function() {
       $(this).find('.fa-chevron-down:eq(0)').toggle();
       $(this).find('.fa-chevron-up:eq(0)').toggle();
     })
+    $('.slider-item .list-group-item').click(function(){
+        alert('aaaa');
+    })
     $('.owl-slider').owlCarousel({
     loop:true,
     margin:10,

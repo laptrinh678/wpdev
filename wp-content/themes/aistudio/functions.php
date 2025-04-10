@@ -14,5 +14,9 @@ function aistudio_theme_support() {
         'vertical' => 'Vertical Menu',
         'mobile' => 'Mobile Menu'
     ]);
-
+    add_theme_support('post-thumbnails');
+    add_theme_support( 'post-formats', array( 'aside', 'gallery', 'quote', 'image', 'video' ) );
+  
 }
+
+add_filter('use_block_editor_for_post', '__return_false', 10);

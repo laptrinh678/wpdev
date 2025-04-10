@@ -1,4 +1,14 @@
-<?php global $theme_uri; ?>
+<?php 
+global $theme_uri;
+// $menu = wp_nav_menu();
+// print_r($menu)
+$menu_locations = get_nav_menu_locations();
+$menuId = $menu_locations['primary'];
+// echo $menuId;
+// die();
+$menu = wp_get_nav_menu_items($menuId);
+//print_r($menu);
+ ?>
 <header>
       <div class="row" style="background: black;">
         <div class="col-md-4" style="padding-top: 10px;">
@@ -11,21 +21,44 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav mr-auto">
+                <?php foreach($menu as $itemMenu) { 
+                   $arrMenuChildCurrent = [];
+                ?>
+                <?php if($itemMenu->menu_item_parent == 0){ 
+                  $filtered_items = wp_list_filter($menu, ['menu_item_parent' => $itemMenu->ID]);
+                  ?>
                 <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Công cụ
+                    <?php 
+                     echo $itemMenu->title;
+                    ?>
+                    <?php if(count($filtered_items)>0) {?>
                     <i class="fa fa-angle-down" aria-hidden="true"></i>
                     <i class="fa fa-angle-up disabled" aria-hidden="true"></i>
+                    <?php } ?>
                   </a>
+                  <?php if(count($filtered_items)>0){ ?>
+                  <?php if($itemMenu->post_name == 'cong-cu') { ?>
                   <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <div class="row">
                       <div class="col-4">
                         <ul class="list-group">
-                          <li class="list-group-item" c-data="picture" > <i class="fa fa-picture-o" aria-hidden="true"></i>Hình ảnh</li>
-                          <li class="list-group-item" c-data="video"><i class="fa fa-video-camera" aria-hidden="true"></i>Video</li>
-                          <li class="list-group-item" c-data="audio"><i class="fa fa-volume-up" aria-hidden="true"></i>Âm thanh</li>
+                          <?php foreach($filtered_items as $filtered_items) { ?>
+                          <li class="list-group-item" c-data="picture" > 
+                            <?php if($filtered_items->post_name =='video'){  ?>
+                            <i class="fa fa-video-camera" aria-hidden="true"></i>
+                            <?php } ?>
+                            <?php if($filtered_items->post_name =='hinh-anh'){  ?>
+                            <i class="fa fa-picture-o" aria-hidden="true"></i>
+                            <?php } ?>
+                            <?php if($filtered_items->post_name == 'am-thanh'){  ?>
+                            <i class="fa fa-volume-up" aria-hidden="true"></i>
+                            <?php } ?>
+                            <?php echo $filtered_items ->title ?></li>
+                          <?php } ?>
                         </ul>
                       </div>
+                      <?php if($itemMenu->post_name =='cong-cu'){ ?>
                       <div class="col-8" style="padding-left: 0px;">
                         <ul class="item-menu-child">
                           <div class="w-100" id="picture">
@@ -85,42 +118,49 @@
                          
                         </ul>
                       </div>
+                      <?php } ?>
                     </div>
                   </div>
-                </li>
-                <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Giải pháp
-                    <i class="fa fa-angle-down" aria-hidden="true"></i>
-                    <i class="fa fa-angle-up disabled" aria-hidden="true"></i>
-                  </a>
+                <?php }else { ?>
                   <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#">  <i class="fa fa-star" aria-hidden="true"></i>Marketting</a>
-                    <a class="dropdown-item" href="#"><i class="fa fa-shopping-cart" aria-hidden="true"></i>Thương mại điện tử</a>
-                    <a class="dropdown-item" href="#"><i class="fa fa-lightbulb-o" aria-hidden="true"></i> Sáng tạo nội dung</a>
-                    <a class="dropdown-item" href="#"><i class="fa fa-book" aria-hidden="true"></i>Đào tạo</a>
+                    <?php foreach($filtered_items as $dropdownSimple){ ?>
+                    <a class="dropdown-item" href="#">  
+                    <?php
+                      switch ($dropdownSimple->post_name) {
+                        case "marketting":
+                          echo '<i class="fa fa-star" aria-hidden="true"></i>';
+                          break;
+                        case "thuong-mai-dien-tu":
+                          echo '<i class="fa fa-shopping-cart" aria-hidden="true"></i>';
+                          break;
+                        case "sang-tao-noi-dung":
+                          echo '<i class="fa fa-lightbulb-o" aria-hidden="true"></i>';
+                          break;
+                        case "dao-tao":
+                          echo '<i class="fa fa-book" aria-hidden="true"></i>';
+                          break;
+                        case "ve-aistudio":
+                          echo '<i class="fa fa-grav" aria-hidden="true"></i>';
+                        break;
+                        case "blog":
+                          echo '<i class="fa fa-newspaper-o" aria-hidden="true"></i>';
+                        break;
+                        case "lien-he":
+                          echo '<i class="fa fa-address-book-o" aria-hidden="true"></i>';
+                          break;
+                        case "chuong-trinh-affliate":
+                          echo '<i class="fa fa-handshake-o" aria-hidden="true"></i>';
+                      }
+                    ?>
+                      <?php echo $dropdownSimple->title; ?>
+                    </a>
+                    <?php }?>
                   </div>
+                <?php } ?>
+                <?php }?>
                 </li>
-                <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                   Về chúng tôi
-                   <i class="fa fa-angle-down" aria-hidden="true"></i>
-                   <i class="fa fa-angle-up disabled" aria-hidden="true"></i>
-                  </a>
-                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#"><i class="fa fa-grav" aria-hidden="true"></i>Về Ai Studio</a>
-                    <a class="dropdown-item" href="#"><i class="fa fa-handshake-o" aria-hidden="true"></i>Chương trình Affliate</a>
-                    <a class="dropdown-item" href="#"><i class="fa fa-newspaper-o" aria-hidden="true"></i>Blog</a>
-                    <a class="dropdown-item" href="#"><i class="fa fa-address-book-o" aria-hidden="true"></i>Liên hệ</a>
-                  </div>
-                </li>
-                      <li class="nav-item">
-                  <a class="nav-link" href="#">Bảng giá</a>
-                </li>
-                      <li class="nav-item">
-                  <a class="nav-link" href="#">API</a>
-                </li>
-               
+                <?php } ?>
+                <?php } ?>
               </ul>
             </div>
           </nav>
@@ -149,11 +189,24 @@
           </div>
           <div class="p-2 col-md-10">
             <div class="owl-carousel owl-theme owl-slider">
-              <div class="item"><img src="<?php echo $theme_uri; ?>/images/s1.png"  alt=""></div>
-              <div class="item"><img src="<?php echo $theme_uri; ?>/images/s2.png"  alt=""></div>
-              <div class="item"><img src="<?php echo $theme_uri; ?>/images/s3.png"  alt=""></div>
-              <div class="item"><img src="<?php echo $theme_uri; ?>/images/s4.png"  alt=""></div>
-              <div class="item"><img src="<?php echo $theme_uri; ?>/images/s5.png"  alt=""></div>
+              <?php while(have_posts()): the_post(); ?>
+              <div class="item">
+                <!-- <img src="<?php echo $theme_uri; ?>/images/s1.png"  alt=""> -->
+                 <?php 
+                 $tags = get_the_tags();
+                 $tagSlugs = [];
+                 if ($tags) {
+                      foreach ($tags as $tag) {
+                          $tagSlugs[] = $tag->slug;
+                      }
+                  }
+                  ?>
+                 <a href="<?php the_permalink(); ?>" class="<?= $tagSlugs[0]; ?>">
+                  <?= get_the_post_thumbnail(get_the_id(), 'medium');?>
+                  <strong><?= the_title(); ?></strong>
+                </a>
+              </div>
+              <?php endwhile ?>
             </div>
           </div>
         </div>
