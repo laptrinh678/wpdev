@@ -12,7 +12,7 @@ $menu = wp_get_nav_menu_items($menuId);
 <header>
       <div class="row" style="background: black;">
         <div class="col-md-4" style="padding-top: 10px;">
-          <img src="<?php echo $theme_uri; ?>/images/logo.png" alt="">
+          <a href="<?php echo esc_url(home_url('/')); ?>"><img src="<?php echo $theme_uri; ?>/images/logo.png" alt=""></a>
         </div>
         <div class="col-md-6">
           <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -26,10 +26,12 @@ $menu = wp_get_nav_menu_items($menuId);
                 ?>
                 <?php if($itemMenu->menu_item_parent == 0){ 
                   $filtered_items = wp_list_filter($menu, ['menu_item_parent' => $itemMenu->ID]);
+
                   ?>
                 <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <a class="nav-link dropdown-toggle" href="<?= $itemMenu->url; ?>" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <?php 
+                    //print_r($itemMenu);
                      echo $itemMenu->title;
                     ?>
                     <?php if(count($filtered_items)>0) {?>
@@ -38,27 +40,30 @@ $menu = wp_get_nav_menu_items($menuId);
                     <?php } ?>
                   </a>
                   <?php if(count($filtered_items)>0){ ?>
-                  <?php if($itemMenu->post_name == 'cong-cu') { ?>
+                  <?php if(sanitize_title($itemMenu->title) == 'cong-cu') { ?>
                   <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <div class="row">
                       <div class="col-4">
                         <ul class="list-group">
                           <?php foreach($filtered_items as $filtered_items) { ?>
                           <li class="list-group-item" c-data="picture" > 
-                            <?php if($filtered_items->post_name =='video'){  ?>
+                            <a href="<?= $filtered_items->url;?>">
+                            <?php if(sanitize_title($filtered_items->title) =='video'){  ?>
                             <i class="fa fa-video-camera" aria-hidden="true"></i>
                             <?php } ?>
-                            <?php if($filtered_items->post_name =='hinh-anh'){  ?>
+                            <?php if(sanitize_title($filtered_items->title) =='hinh-anh'){  ?>
                             <i class="fa fa-picture-o" aria-hidden="true"></i>
                             <?php } ?>
-                            <?php if($filtered_items->post_name == 'am-thanh'){  ?>
+                            <?php if(sanitize_title($filtered_items->title) == 'am-thanh'){  ?>
                             <i class="fa fa-volume-up" aria-hidden="true"></i>
                             <?php } ?>
-                            <?php echo $filtered_items ->title ?></li>
+                            <?php echo $filtered_items ->title ?>
+                            </a>
+                          </li>
                           <?php } ?>
                         </ul>
                       </div>
-                      <?php if($itemMenu->post_name =='cong-cu'){ ?>
+                      <?php if(sanitize_title($itemMenu->title) =='cong-cu'){ ?>
                       <div class="col-8" style="padding-left: 0px;">
                         <ul class="item-menu-child">
                           <div class="w-100" id="picture">
@@ -124,7 +129,7 @@ $menu = wp_get_nav_menu_items($menuId);
                 <?php }else { ?>
                   <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <?php foreach($filtered_items as $dropdownSimple){ ?>
-                    <a class="dropdown-item" href="#">  
+                    <a class="dropdown-item" href="<?= $dropdownSimple->url; ?>">  
                     <?php
                       switch ($dropdownSimple->post_name) {
                         case "marketting":

@@ -5,8 +5,6 @@ $(document).ready(function() {
           //$(this).children().show('slow')
           //$(this).children('.dropdown-menu:first').show(500);
           $(this).children('.dropdown-menu:first').fadeToggle(500);
-          $(this).find('.fa-angle-down:eq(0)').toggle();
-          $(this).find('.fa-angle-up:eq(0)').toggle();
             // Tìm dropdown-menu đầu tiên trong cùng một nav-item dropdown và hiển thị nó
             //$(this).find('.dropdown-menu').toggle();
             //jQuery(this).find('.dropdown-menu:first').toggle()
@@ -22,9 +20,6 @@ $(document).ready(function() {
       $(this).find('.disabled:eq(0), .disabled:eq(1)').toggle();
       $(this).find('.fa-chevron-down:eq(0)').toggle();
       $(this).find('.fa-chevron-up:eq(0)').toggle();
-    })
-    $('.slider-item .list-group-item').click(function(){
-        alert('aaaa');
     })
     $('.owl-slider').owlCarousel({
     loop:true,
