@@ -255,3 +255,12 @@ Template sidebar
 .media-body h5 a:hover {
     color: #4782d3;
 }
+
+.input-group .input-group-addon{
+    border: none;
+    padding: 9px;
+    padding-left: 15px;
+    background: #EE0033;
+    color: white;
+    border-radius: 0px 4px 4px 0px;
+}

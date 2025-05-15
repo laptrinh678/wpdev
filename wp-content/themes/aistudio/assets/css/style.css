@@ -286,3 +286,36 @@ footer .list-footer .list-group-item .fa{
 .mesage{
   border-bottom: 1px solid #d3cbcb;
 }
+.dropdown-toggle::after{
+  display: none;
+}
+.navbar .list-group-item a{
+  color: black;
+}
+
+.navbar .item-menu-child a{
+  color: black;
+}
+.slider-carosel .item strong {
+  top: 0px;
+    position: absolute;
+    z-index: 1;
+    color: white;
+    margin-left: 10px;
+}
+.slider-carosel .show{
+  display: block;
+}
+
+.slider-carosel .hide{
+  display: none;
+}
+.owl-theme .owl-nav {
+  margin-top: 10px;
+  position: absolute;
+  top: 30%;
+  width: 100%;
+}
+.owl-dots{
+  display: none;
+}

@@ -20,6 +20,11 @@
     }
     .profile .profile-img-list .profile-img-list-item.main {
         width: 50%;
+        /* max-height:335px; */
+    }
+    .profile-img-list-item img{
+        height: 100%;
+        width: 100%;
     }
     .profile .profile-img-list .profile-img-list-item .profile-img-list-link {
         display: block;
@@ -60,4 +65,22 @@
         line-height: 1.625rem;
         margin-top: -0.8125rem;
         text-align: center;
+    }
+    .profile-img-content{
+        color: white;
+        font-size: 18px;
+        font-weight: 600;
+        padding: 20px;
+    }
+    .page-numbers{
+        padding: 10px;
+    background: red;
+    color: white;
+    border-radius: 4px;
+    }
+    .screen-reader-text{
+        display: none;
+    }
+    .nav-links{
+        margin: auto;
     }

@@ -171,12 +171,12 @@
           <li class="list-group-item"><i class="fa fa-map-marker" aria-hidden="true"></i>Tầng 23, Tòa nhà Viettel Complex, 285 Cách Mạng Tháng Tám, phường 12, quận 10, TPHCM</li>
         </ul>
       </div>
-      <div class="row pd-t-50 pd-b-50 mesage">
+      <!-- <div class="row pd-t-50 pd-b-50 mesage">
         <p class="text-center">
           <img src="<?php echo $theme_uri; ?>/images/m1.png" alt="">
           <img src="<?php echo $theme_uri; ?>/images/m2.png" alt="">
           <img src="<?php echo $theme_uri; ?>/images/m3.png" alt="">
         </p>
-      </div>
+      </div> -->
     </div>
   </footer>

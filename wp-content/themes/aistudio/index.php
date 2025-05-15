@@ -26,12 +26,6 @@
               <a class="item-picture text-white" href="javascript:void(0)">Hình ảnh</a>
               <a class="bg-dark item-video text-white" href="javascript:void(0)">Video</a>
             </div>
-            <!-- <div class="switch">
-              <div class="col-sm-6">
-                <a href="">Hình ảnh</a>
-              </div>
-              <div class="col-sm-6"><a class="btn btn-dark">Video</a></div>
-            </div> -->
           </div>
         </div>
       </div>

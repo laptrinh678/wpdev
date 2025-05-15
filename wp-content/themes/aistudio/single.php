@@ -16,7 +16,15 @@
 </head>
 <div class="container-fluid" id="single" c-data="no-slider">
     <?php get_header(); ?>
-    <div class="container pb50">
+    <div class="container pb50 pd-t-30">
+    <div class="row">
+          <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="<?= esc_url(home_url('/')); ?>">Trang chủ</a></li>
+            <li class="breadcrumb-item active" aria-current="page"><?= get_the_title() ?? 'Bài viết'; ?></li>
+          </ol>
+        </nav>
+      </div>
     <div class="row">
         <div class="col-md-9 mb40">
             <article>

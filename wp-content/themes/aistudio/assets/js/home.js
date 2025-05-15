@@ -11,21 +11,29 @@ $(document).ready(function() {
         }
         
     );
-    $('.list-group-item').click(function(){
+    // click vào từng thẻ li menu công cụ
+    $('.navbar .list-group-item').click(function(){
       let menuActive = $(this).attr('c-data');
         $('#'+menuActive).show();
         $('.item-menu-child > *:not(#'+ menuActive+')').hide();
     })
+
+    $('.changeTabSlide .list-group-item').click(function(){
+        let slideShow = '.slider-' + $(this).attr('c-data');
+        $('.slider-carosel .itemSlider').hide();
+        $(slideShow).show();
+      })
+
     $('.item-lv .list-group-item').click(function(){
       $(this).find('.disabled:eq(0), .disabled:eq(1)').toggle();
       $(this).find('.fa-chevron-down:eq(0)').toggle();
       $(this).find('.fa-chevron-up:eq(0)').toggle();
     })
-    $('.owl-slider').owlCarousel({
+    $('.slider-hinh-anh').owlCarousel({
     loop:true,
     margin:10,
     nav:true,
-    autoplay:true,
+    autoplay:false,
     responsive:{
         0:{
             items:1
@@ -34,7 +42,61 @@ $(document).ready(function() {
             items:3
         },
         1000:{
-            items:5
+            items:4
+        }
+    }
+})
+
+$('.slider-video').owlCarousel({
+    loop:true,
+    margin:10,
+    nav:true,
+    autoplay:false,
+    responsive:{
+        0:{
+            items:1
+        },
+        600:{
+            items:3
+        },
+        1000:{
+            items:4
+        }
+    }
+})
+
+$('.slider-noi-bat').owlCarousel({
+    loop:true,
+    margin:10,
+    nav:true,
+    autoplay:false,
+    responsive:{
+        0:{
+            items:1
+        },
+        600:{
+            items:3
+        },
+        1000:{
+            items:4
+        }
+    }
+})
+
+$('.slider-am-thanh').owlCarousel({
+    loop:true,
+    margin:10,
+    nav:true,
+    autoplay:false,
+    responsive:{
+        0:{
+            items:1
+        },
+        600:{
+            items:3
+        },
+        1000:{
+            items:4
         }
     }
 })

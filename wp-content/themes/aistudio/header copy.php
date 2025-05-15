@@ -12,7 +12,7 @@ $menu = wp_get_nav_menu_items($menuId);
 <header>
       <div class="row" style="background: black;">
         <div class="col-md-4" style="padding-top: 10px;">
-          <a href="<?= esc_url(home_url('/')); ?>"><img src="<?php echo $theme_uri; ?>/images/logo.png" alt=""></a>
+          <a href="<?php echo esc_url(home_url('/')); ?>"><img src="<?php echo $theme_uri; ?>/images/logo.png" alt=""></a>
         </div>
         <div class="col-md-6">
           <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -45,19 +45,19 @@ $menu = wp_get_nav_menu_items($menuId);
                     <div class="row">
                       <div class="col-4">
                         <ul class="list-group">
-                          <?php foreach($filtered_items as $filtered_item) { ?>
-                          <li class="list-group-item" c-data="<?= sanitize_title($filtered_item->title);?>" > 
+                          <?php foreach($filtered_items as $filtered_items) { ?>
+                          <li class="list-group-item" c-data="<?= sanitize_title($filtered_items->title);?>" > 
                             <a href="javascript:void(0)">
-                            <?php if(sanitize_title($filtered_item->title) =='video'){  ?>
+                            <?php if(sanitize_title($filtered_items->title) =='video'){  ?>
                             <i class="fa fa-video-camera" aria-hidden="true"></i>
                             <?php } ?>
-                            <?php if(sanitize_title($filtered_item->title) =='hinh-anh'){  ?>
+                            <?php if(sanitize_title($filtered_items->title) =='hinh-anh'){  ?>
                             <i class="fa fa-picture-o" aria-hidden="true"></i>
                             <?php } ?>
-                            <?php if(sanitize_title($filtered_item->title) == 'am-thanh'){  ?>
+                            <?php if(sanitize_title($filtered_items->title) == 'am-thanh'){  ?>
                             <i class="fa fa-volume-up" aria-hidden="true"></i>
                             <?php } ?>
-                            <?php echo $filtered_item ->title ?>
+                            <?php echo $filtered_items ->title ?>
                             </a>
                           </li>
                           <?php } ?>
@@ -66,43 +66,61 @@ $menu = wp_get_nav_menu_items($menuId);
                       <?php if(sanitize_title($itemMenu->title) =='cong-cu'){ ?>
                       <div class="col-8" style="padding-left: 0px;">
                         <ul class="item-menu-child">
-                        <?php 
-                        foreach($filtered_items as $filtered_data) {
-                          $className = !(sanitize_title($filtered_data->title) == 'hinh-anh') ? 'w-100 disabled' :'w-100';
-                          $query_args = array(
-                                'post_type'      => 'post',
-                                'posts_per_page' => 4, // Giới hạn 5 bài
-                                'tax_query'      => array(
-                                    array(
-                                        'taxonomy' => $filtered_data->object,
-                                        'field'    => 'term_id',
-                                        'terms'    => $filtered_data->object_id,
-                                    ),
-                                ),
-                            );
-                          $custom_query = new WP_Query($query_args);
-                          ?>
-                          <div class="<?= $className ;?>" id="<?= sanitize_title($filtered_data->title);?>">
-
-                          <?php
-                            if ($custom_query->have_posts()) {
-          
-                              while ($custom_query->have_posts()) : $custom_query->the_post();
-                                  get_template_part('template-parts/menu/item', null, [
-                                      'post_id'  => get_the_ID(),
-                                      'post_url' => get_permalink(),
-                                      'excerpt' => get_the_excerpt(),
-                                      'menu_item_id' => $itemMenu->object_id // Truyền thêm object_id
-                                  ]);
-                              endwhile;
-                              wp_reset_postdata();
-                          }
-                          ?>
-                            
-
-                            
+                          <div class="w-100" id="hinh-anh">
+                            <li class="w-50">
+                              <p><strong>Tạo ảnh từ văn bản</strong></p>
+                              <div class="content">
+                                Framer is a web builder for creative pros. Be sure to check out framer.com to learn more.
+                              </div>
+                            </li>
+                            <!-- <li class="w-50">
+                              <p><strong>Tạo ảnh từ phác thảo</strong></p>
+                              <div class="content">
+                                Framer is a web builder for creative pros. Be sure to check out framer.com to learn more.
+                              </div>
+                            </li>
+                            <li class="w-50">
+                              <p><strong>Tạo ảnh tương tư</strong></p>
+                              <div class="content">
+                                Framer is a web builder for creative pros. Be sure to check out framer.com to learn more.
+                              </div>
+                            </li>
+                            <li class="w-50">
+                              <p><strong>Chỉnh sửa ảnh</strong></p>
+                              <div class="content">
+                                Framer is a web builder for creative pros. Be sure to check out framer.com to learn more.
+                              </div>
+                            </li> -->
                           </div>
-                        <?php } ?>
+                          <!-- <div class="w-100 disabled" id="video">
+                            <li class="w-50">
+                              <p> <strong>Mc ảo phông xanh</strong></p>
+                              <div class="content">
+                                Framer is a web builder for creative pros. Be sure to check out framer.com to learn more.
+                              </div>
+                            </li>
+                            <li class="w-50">
+                              <p> <strong>Mc ảo kịch bản</strong></p>
+                              <div class="content">
+                                Framer is a web builder for creative pros. Be sure to check out framer.com to learn more.
+                              </div>
+                            </li>
+                          </div> -->
+                          <!-- <div class="w-100 disabled" id="am-thanh">
+                            <li class="w-50">
+                              <p> <strong>Văn bản thành giọng nói</strong></p>
+                              <div class="content">
+                                Framer is a web builder for creative pros. Be sure to check out framer.com to learn more.
+                              </div>
+                            </li>
+                            <li class="w-50">
+                              <p> <strong>Giọng nói thành văn bản</strong></p>
+                              <div class="content">
+                                Framer is a web builder for creative pros. Be sure to check out framer.com to learn more.
+                              </div>
+                            </li>
+                          </div> -->
+                         
                         </ul>
                       </div>
                       <?php } ?>
@@ -167,22 +185,34 @@ $menu = wp_get_nav_menu_items($menuId);
       </p>
         <div class="container slider-item d-flex p-3 text-white">
           <div class="p-2 col-md-2">
-            <ul class="list-group changeTabSlide">
-              <li class="list-group-item" c-data="noi-bat"> <i class="fa fa-star" aria-hidden="true"></i>Nổi bật</li>
-              <li class="list-group-item" c-data="hinh-anh"><i class="fa fa-picture-o" aria-hidden="true"></i>Hình ảnh</li>
-              <li class="list-group-item" c-data="video"><i class="fa fa-video-camera" aria-hidden="true"></i>Video</li>
-              <li class="list-group-item" c-data="am-thanh"><i class="fa fa-volume-up" aria-hidden="true"></i> Âm thanh</li>
+            <ul class="list-group">
+              <li class="list-group-item"> <i class="fa fa-star" aria-hidden="true"></i>Nổi bật</li>
+              <li class="list-group-item"><i class="fa fa-picture-o" aria-hidden="true"></i>Hình ảnh</li>
+              <li class="list-group-item"><i class="fa fa-video-camera" aria-hidden="true"></i>Video</li>
+              <li class="list-group-item"><i class="fa fa-volume-up" aria-hidden="true"></i> Âm thanh</li>
             </ul>
           </div>
-          <div class="p-2 col-md-10 slider-carosel">
-            <?php 
-            $arrTagShow = ['hinh-anh','video', 'noi-bat', 'am-thanh'];
-            ?>
-            <?php foreach($arrTagShow as $tagShow) { ?>
-              <div class="owl-carousel itemSlider owl-theme <?= 'slider-'.$tagShow ;?> <?= $tagShow == 'hinh-anh' ? 'show' : 'hide' ;?> ">
-                <?php get_template_part('template-parts/slider/item', null, ['tag-slider'=>$tagShow]);?>
+          <div class="p-2 col-md-10">
+            <div class="owl-carousel owl-theme owl-slider">
+              <?php while(have_posts()): the_post(); ?>
+              <div class="item">
+                <!-- <img src="<?php echo $theme_uri; ?>/images/s1.png"  alt=""> -->
+                 <?php 
+                 $tags = get_the_tags();
+                 $tagSlugs = [];
+                 if ($tags) {
+                      foreach ($tags as $tag) {
+                          $tagSlugs[] = $tag->slug;
+                      }
+                  }
+                  ?>
+                 <a href="<?php the_permalink(); ?>" class="<?= $tagSlugs[0]; ?>">
+                  <?= get_the_post_thumbnail(get_the_id(), 'medium');?>
+                  <strong><?= the_title(); ?></strong>
+                </a>
               </div>
-            <?php } ?>
+              <?php endwhile ?>
+            </div>
           </div>
         </div>
     </div>
